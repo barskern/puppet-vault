@@ -50,6 +50,7 @@
 #
 # @param version The version of Vault to install
 #
+# @param manage_package
 # @param extra_config
 # @param enable_ui
 # @param arch
@@ -122,6 +123,7 @@ class vault (
   Optional[String] $api_addr           = undef,
   Hash $extra_config                   = {},
   Boolean $manage_config_dir           = $install_method == 'archive',
+  Boolean $manage_package              = true,
 ) inherits vault::params {
   # lint:ignore:140chars
   $real_download_url = pick($download_url, "${download_url_base}${version}/${package_name}_${version}_${os}_${arch}.${download_extension}")
